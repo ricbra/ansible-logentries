@@ -1,5 +1,6 @@
 ---
 # defaults file for logentries
 logentries_packages: []
-logentries_apt_repositores: []
+logentries_apt_repositories: []
 logentries_apt_keys: []
+logentries_account_key: ""

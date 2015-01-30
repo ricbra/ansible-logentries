@@ -10,3 +10,33 @@
 - name: OS is supported
   assert:
     that: logentries_os_supported == True
+
+- name: Add APT keys
+  apt_key: id={{ item.id }} {{ item.method }}={{ item.value }} state=present
+  with_items: logentries_apt_keys
+  when: ansible_os_family == "Debian"
+
+- name: Add APT repositories
+  apt_repository: repo="{{ item }}" update_cache=yes
+  with_items: logentries_apt_repositories
+  when: ansible_os_family == "Debian"
+
+- name: Install packages
+  apt: name={{ item }} state=present
+  with_items: logentries_packages
+  when: ansible_os_family == "Debian"
+
+- name: Create directory
+  file: path=/etc/le state=directory
+
+- name: Create config
+  template: src=config.j2 dest=/etc/le/config
+
+- name: Check if host is registered
+  command: le whoami
+  register: result
+  ignore_errors: True
+  changed_when: False
+
+- debug: msg="it failed"
+  when: result|failed
