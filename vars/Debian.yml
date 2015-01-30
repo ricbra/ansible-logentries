@@ -1,0 +1,11 @@
+---
+logentries_packages:
+  - curl
+
+logentries_os_supported: yes
+
+logentries_apt_repositores:
+  - "deb http://rep.logentries.com/ {{ ansible_distribution_release }} main"
+
+logentries_apt_keys:
+  - { id: C43C79AD,  method: keyserver, value: "keyserver.ubuntu.com " }
