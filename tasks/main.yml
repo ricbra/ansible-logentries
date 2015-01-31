@@ -26,17 +26,13 @@
   with_items: logentries_packages
   when: ansible_os_family == "Debian"
 
-- name: Create directory
-  file: path=/etc/le state=directory
-
-- name: Create config
-  template: src=config.j2 dest=/etc/le/config
-
 - name: Check if host is registered
   command: le whoami
   register: result
   ignore_errors: True
   changed_when: False
 
-- debug: msg="it failed"
+- name: Register host
+  shell: "le register --name={{ ansible_fqdn }} --hostname={{ ansible_fqdn }} --yes --account-key={{ logentries_account_key }}"
   when: result|failed
+
