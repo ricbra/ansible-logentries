@@ -1,28 +1,19 @@
 ---
 galaxy_info:
-  author: your name
+  author: Richard van den Brand
   description: 
-  company: your company (optional)
-  # Some suggested licenses:
-  # - BSD (default)
-  # - MIT
-  # - GPLv2
-  # - GPLv3
-  # - Apache
-  # - CC-BY
-  license: license (GPLv2, CC-BY, etc)
+  company:
+  license: MIT
   min_ansible_version: 1.2
   #
   # Below are all platforms currently available. Just uncomment
   # the ones that apply to your role. If you don't see your 
   # platform on this list, let us know and we'll get it added!
   #
-  #platforms:
-  #- name: EL
-  #  versions:
-  #  - all
-  #  - 5
-  #  - 6
+  platforms:
+  - name: EL
+    versions:
+    - 6
   #  - 7
   #- name: GenericUNIX
   #  versions:
@@ -69,18 +60,16 @@ galaxy_info:
   #  - 9.1
   #  - 9.1
   #  - 9.2
-  #- name: Ubuntu
-  #  versions:
-  #  - all
-  #  - lucid
-  #  - maverick
-  #  - natty
-  #  - oneiric
-  #  - precise
-  #  - quantal
-  #  - raring
-  #  - saucy
-  #  - trusty
+  - name: Ubuntu
+    versions:
+    - lucid
+    - natty
+    - oneiric
+    - precise
+    - quantal
+    - raring
+    - saucy
+    - trusty
   #- name: SLES
   #  versions:
   #  - all
@@ -94,13 +83,9 @@ galaxy_info:
   #  versions:
   #  - all
   #  - any
-  #- name: Debian
-  #  versions:
-  #  - all
-  #  - etch
-  #  - lenny
-  #  - squeeze
-  #  - wheezy
+  - name: Debian
+    versions:
+    - wheezy
   #
   # Below are all categories currently available. Just as with
   # the platforms above, uncomment those that apply to your role.
