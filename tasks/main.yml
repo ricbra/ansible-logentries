@@ -36,3 +36,5 @@
   shell: "le register --name={{ ansible_fqdn }} --hostname={{ ansible_fqdn }} --yes --account-key={{ logentries_account_key }}"
   when: result|failed
 
+- name: Install logentries daemon
+  apt: name={{ logentries_daemon_package }} state=present

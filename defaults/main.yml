@@ -4,3 +4,6 @@ logentries_packages: []
 logentries_apt_repositories: []
 logentries_apt_keys: []
 logentries_account_key: ""
+logentries_daemon_package: logentries-daemon
+logentries_logs: []
+logentries_service: logentries
