@@ -29,8 +29,8 @@
 - name: Check if host is registered
   command: le whoami
   register: result
-  ignore_errors: True
-  changed_when: False
+  ignore_errors: true
+  changed_when: false
 
 - name: Register host
   shell: "le register --name={{ ansible_fqdn }} --hostname={{ ansible_fqdn }} --yes --account-key={{ logentries_account_key }}"
@@ -38,3 +38,9 @@
 
 - name: Install logentries daemon
   apt: name={{ logentries_daemon_package }} state=present
+
+- name: Follow logs
+  logentries: path={{ item.path }} state={{ item.state | default('present') }}
+  notify:
+  - Restart logentries
+  with_items: logentries_logs
