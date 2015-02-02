@@ -1,22 +1,46 @@
 logentries
-=========
+==========
 
 This role installs and configures the logentries.com agent.
 
 Requirements
 ------------
 
-This role requires Ansible 1.4 or higher and platform requirements are listed in the metadata file.
+Tested on:
+- Debian wheezy
+- Ubuntu trusty, precise
+- Centos 6
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+Only thing required by this role is your logentries.com account key. But you propbably want to folow one or more logs so
+a average configration looks like this:
+
+```yml
+logentries_account_key: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx"
+
+logentries_logs:
+  - name: "Authentication"
+    path: "/var/log/auth.log"
+
+```
+
+When you later on want to unfollow a log:
+
+```yml
+
+logentries_logs:
+  - name: "Authentication"
+    path: "/var/log/auth.log"
+    state: absent
+
+```
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+None.
 
 Example Playbook
 ----------------
@@ -25,12 +49,12 @@ Including an example of how to use your role (for instance, with variables passe
 
     - hosts: servers
       roles:
-         - { role: username.rolename, x: 42 }
+         - { role: ricbra.logentries, logentries_account_key: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx" }
 
 License
 -------
 
-BSD
+MIT
 
 Author Information
 ------------------
