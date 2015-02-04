@@ -14,8 +14,8 @@ Tested on:
 Role Variables
 --------------
 
-Only thing required by this role is your logentries.com account key. But you propbably want to folow one or more logs so
-a average configration looks like this:
+Only thing required by this role is your logentries.com account key. But you probably want to follow one or more logs so
+an average configration looks like this:
 
 ```yml
 logentries_account_key: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx"
@@ -45,7 +45,7 @@ None.
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+Small example of how to use this role in a playbook:
 
     - hosts: servers
       roles:
