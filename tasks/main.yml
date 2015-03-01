@@ -46,7 +46,7 @@
   changed_when: false
 
 - name: Register host
-  shell: "le register --name={{ ansible_fqdn }} --hostname={{ ansible_fqdn }} --yes --account-key={{ logentries_account_key }}"
+  shell: "le register --force --name={{ ansible_fqdn }} --hostname={{ ansible_fqdn }} --yes --account-key={{ logentries_account_key }}"
   when: result|failed
 
 - name: Install logentries daemon APT
