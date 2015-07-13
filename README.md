@@ -7,7 +7,7 @@ Requirements
 ------------
 
 Tested on:
-- Debian wheezy
+- Debian wheezy, jessie
 - Ubuntu trusty, precise
 - Centos 6
 
