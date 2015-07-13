@@ -21,6 +21,7 @@ galaxy_info:
   - name: Debian
     versions:
     - wheezy
+    - jessie
   categories:
   - monitoring
 dependencies: []
