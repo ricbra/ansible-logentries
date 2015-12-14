@@ -37,6 +37,11 @@ logentries_logs:
 
 ```
 
+You may also specify hostname, otherwise `ansible_fqdn` will be used:
+```yml
+logentries_hostname: my.host.com
+```
+
 Dependencies
 ------------
 
