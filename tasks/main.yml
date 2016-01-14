@@ -12,7 +12,7 @@
     that: logentries_os_supported == True
 
 - name: Add APT keys
-  apt_key: id={{ item.id }} {{ item.method }}={{ item.value }} state=present
+  apt_key: id={{ item.id }} keyserver={{ item.keyserver }} state=present
   with_items: logentries_apt_keys
   when: ansible_os_family == "Debian"
 
