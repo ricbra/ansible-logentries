@@ -9,7 +9,7 @@ Requirements
 Tested on:
 - Debian wheezy, jessie
 - Ubuntu trusty, precise, wily, vivid
-- Centos 6
+- Centos 6, 7
 
 Role Variables
 --------------
