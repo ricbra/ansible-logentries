@@ -8,7 +8,7 @@ Requirements
 
 Tested on:
 - Debian wheezy, jessie
-- Ubuntu trusty, precise
+- Ubuntu trusty, precise, wily, vivid
 - Centos 6
 
 Role Variables
@@ -55,6 +55,13 @@ Small example of how to use this role in a playbook:
     - hosts: servers
       roles:
          - { role: ricbra.logentries, logentries_account_key: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx" }
+
+Testing
+-------
+
+In the <code>vagrant</code> folder you can test this role against a variety of Linux distros:
+
+    $ cd vagrant && vagrant up
 
 License
 -------

@@ -18,6 +18,8 @@ galaxy_info:
     - raring
     - saucy
     - trusty
+    - vivid
+    - wily
   - name: Debian
     versions:
     - wheezy

@@ -10,4 +10,4 @@ logentries_apt_repositories:
   - "deb http://rep.logentries.com/ {{ ansible_distribution_release }} main"
 
 logentries_apt_keys:
-  - { id: C43C79AD,  method: keyserver, value: "pgp.mit.edu" }
+  - { id: C43C79AD,  keyserver: "pgp.mit.edu" }
