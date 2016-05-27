@@ -5,3 +5,4 @@ precise64 ansible_ssh_host=10.1.1.14
 trusty64 ansible_ssh_host=10.1.1.15
 vivid64 ansible_ssh_host=10.1.1.16
 centos ansible_ssh_host=10.1.1.17
+xenial64 ansible_ssh_host=10.1.1.18
