@@ -13,12 +13,12 @@
 
 - name: Add APT keys
   apt_key: id={{ item.id }} keyserver={{ item.keyserver }} state=present
-  with_items: logentries_apt_keys
+  with_items: '{{ logentries_apt_keys }}'
   when: ansible_os_family == "Debian"
 
 - name: Add APT repositories
   apt_repository: repo="{{ item }}" update_cache=yes
-  with_items: logentries_apt_repositories
+  with_items: '{{ logentries_apt_repositories }}'
   when: ansible_os_family == "Debian"
 
 - name: Install prequesites for RedHat
@@ -31,12 +31,12 @@
 
 - name: Install packages YUM
   yum: name={{ item }} state=present
-  with_items: logentries_packages
+  with_items: '{{ logentries_packages }}'
   when: ansible_os_family == "RedHat"
 
 - name: Install packages APT
   apt: name={{ item }} state=present
-  with_items: logentries_packages
+  with_items: '{{ logentries_packages }}'
   when: ansible_os_family == "Debian"
 
 - name: Check if host is registered
@@ -58,7 +58,7 @@
   when: ansible_os_family == "RedHat"
 
 - name: Follow logs
-  logentries: path={{ item.path }} state={{ item.state | default('present') }}
+  logentries: path={{ item.path }} state={{ item.state | default('present') }} name={{ item.name | default(item.path) }}
   notify:
   - Restart logentries
-  with_items: logentries_logs
+  with_items: '{{ logentries_logs }}'
