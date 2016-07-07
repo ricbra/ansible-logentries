@@ -58,7 +58,7 @@
   when: ansible_os_family == "RedHat"
 
 - name: Follow logs
-  logentries: path={{ item.path }} state={{ item.state | default('present') }}
+  logentries: path={{ item.path }} state={{ item.state | default('present') }} name={{ item.name | default(item.path) }}
   notify:
   - Restart logentries
   with_items: logentries_logs
