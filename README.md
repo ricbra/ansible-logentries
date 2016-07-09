@@ -42,6 +42,11 @@ You may also specify hostname, otherwise `ansible_fqdn` will be used:
 logentries_hostname: my.host.com
 ```
 
+Alternatively you can specify the key of existing logentries log set:
+```yml
+logentries_set_key: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+```
+
 Dependencies
 ------------
 
