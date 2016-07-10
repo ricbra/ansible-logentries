@@ -39,6 +39,10 @@
   with_items: '{{ logentries_packages }}'
   when: ansible_os_family == "Debian"
 
+- name: Ensure logentries config directory exists
+  file: path=/etc/le state=directory group=root owner=root mode=750
+  when: logentries_set_key is defined
+
 - name: Add logentries config
   template: src=config.j2 dest=/etc/le/config mode=640 owner=root group=root
   when: logentries_set_key is defined
