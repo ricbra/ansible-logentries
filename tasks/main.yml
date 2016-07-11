@@ -39,15 +39,26 @@
   with_items: '{{ logentries_packages }}'
   when: ansible_os_family == "Debian"
 
+- name: Ensure logentries config directory exists
+  file: path=/etc/le state=directory group=root owner=root mode=750
+  when: logentries_set_key is defined
+
+- name: Add logentries config
+  template: src=config.j2 dest=/etc/le/config mode=640 owner=root group=root
+  when: logentries_set_key is defined
+  notify:
+  - Restart logentries
+
 - name: Check if host is registered
   command: le whoami
   register: result
   ignore_errors: true
   changed_when: false
+  when: logentries_set_key is not defined
 
 - name: Register host
   shell: "le register --force --name={{ logentries_hostname | default(ansible_fqdn) }} --hostname={{ logentries_hostname | default(ansible_fqdn) }} --yes --account-key={{ logentries_account_key }}"
-  when: result|failed
+  when: result|failed and logentries_set_key is not defined
 
 - name: Install logentries daemon APT
   apt: name={{ logentries_daemon_package }} state=present
