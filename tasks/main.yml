@@ -73,3 +73,6 @@
   notify:
   - Restart logentries
   with_items: '{{ logentries_logs }}'
+
+- name: Ensure logentries service running
+  service: name={{ logentries_service }} state=started enabled=yes
