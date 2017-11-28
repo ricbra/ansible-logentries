@@ -70,6 +70,8 @@
 
 - name: Follow logs
   logentries: path={{ item.path }} state={{ item.state | default('present') }} name={{ item.name | default(item.path) }}
-  notify:
-  - Restart logentries
   with_items: '{{ logentries_logs }}'
+  notify: "restart logentries"
+
+- name: Ensure logentries service running
+  service: name={{ logentries_service }} state=started enabled=yes
